@@ -2,7 +2,8 @@
 layout: post
 title: "Init Blog to Post"
 date: 2016-07-03 16:44:00 +0900
-categories: blog history
+categories: blog
+comments: true
 ---
 
 [Github Page][github-page]와 [Jekyll][jekyll]를 이용해 블로그를 만들어보고 있습니다. 기존에 사용하던 티스토리 블로그가 사용 편의성 측면에서 점점 뒤떨어지는 것 같아 차라리 Vim을 이용해 마크다운형식으로 글을 바로 쓸 수 있는 블로그를 찾다 보니 결국 여기로 흘러들어오게 되네요. Jekyll은 루비 기반으로 되어있어서 겸사겸사 루비 프로그래밍에 대한 경험도 쌓을 수 있지 않을까 기대하고 있습니다. 

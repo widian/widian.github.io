@@ -16,5 +16,7 @@ url: "http://widian.github.io/" # the base hostname & protocol for your site
 twitter_username: lys2419
 github_username: widian
 
+disqus_shortname: kr-widian
+disqus_url: "https://widian.github.io"
 # Build settings
 markdown: kramdown
