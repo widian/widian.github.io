@@ -6,7 +6,7 @@
 # 'jekyll serve'. If you change this file, please restart the server process.
 
 # Site settings
-title: Widian Hobby Notes
+title: Widian's Hobby Notes
 email: lys2419@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
   프로그래밍 중 생긴 문제상황에 대한 대처 및 번역 등록을 위한 블로그. 
