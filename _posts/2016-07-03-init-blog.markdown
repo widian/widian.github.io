@@ -10,5 +10,12 @@ comments: true
 
 당분간 주말에는 블로그에 올릴 글을 쓰는 일을 진행해야 할 것 같지만, 예전 티스토리 블로그 운영 경험을 고려해보면 만들기만 열심히 만들고 관리하지 않는 죽은 블로그가 될지도 모르겠다는 생각이 드네요.
 
+{% highlight python %}
+
+def python_code():
+    print "jekyll is good and highlighter works nicely"
+
+{% endhighlight %}
+
 [github-page]: https://pages.github.com/
 [jekyll]: https://jekyllrb.com/
