@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Make Twitter Bot Using Python - 1"
+title: "Python을 이용해 트위터 봇 만들어 보기 - 1"
 date: 2016-07-22 02:25:00 +0900
 categories: twitter-bot
 comments: true
@@ -73,8 +73,8 @@ class TweetSupport(object):
     def __init__(self):
         self.api = twitter.Api(
                 consumer_key=CONSUMER_KEY,
-                consumer_secret = CONSUMER_SECRET,
-                access_token_key = ACCESS_TOKEN_KEY,
+                consumer_secret=CONSUMER_SECRET,
+                access_token_key=ACCESS_TOKEN_KEY,
                 access_token_secret=ACCESS_TOKEN_SECRET)
     def get_api(self):
         return self.api
