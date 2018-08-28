@@ -21,3 +21,7 @@ disqus_url: "https://widian.github.io"
 disqus_pageidentifier: "kr-widian"
 # Build settings
 markdown: kramdown
+
+plugins:
+    - jekyll-feed
+
