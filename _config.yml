@@ -18,5 +18,6 @@ github_username: widian
 
 disqus_shortname: kr-widian
 disqus_url: "https://widian.github.io"
+disqus_pageidentifier: "kr-widian"
 # Build settings
 markdown: kramdown
