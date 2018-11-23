@@ -1,3 +1,11 @@
+---
+layout: post
+title: "IF kakao 참가 후기"
+date: 2018-09-06 16:44:00 +0900
+categories: blog
+comments: true
+---
+
 ## IF kakao 참가 정리 
 
 > 9월 1일에 뒤늦게 당첨된걸 깨달아서 부랴부랴 바쁜 와중에 다녀왔습니다ㅠㅠ...

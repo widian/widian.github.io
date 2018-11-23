@@ -1,3 +1,11 @@
+---
+layout: post
+title: "gRPC란 무엇이고 어떻게 구성되나요?"
+date: 2018-11-23 12:00:00 +0900
+categories: blog
+comments: true
+---
+
 ## gRPC
 - 다른 개발자 분들께 공유할 용도로 개략적으로 쓰인 글입니다. 번역이 잘못되었을 수도 있습니다 ㅠ
 ### gRPC란 무엇인가요?
@@ -145,9 +153,6 @@ Person john =
   - 무려 1개 인스턴스당 최소 연간 2500달러입니다. 엔터프라이즈 급은 연간 5000달러입니다 [참고](https://www.nginx.com/products/buy-nginx-plus/)
 
 ### 서비스에 gRPC 적용 방식 예정
-- 모든 서버가 gRPC로 통신하도록 하는 것이 목표이지만, 어려울듯합니다...
-- API
-  - Client(and, ios)-gRPC stub => api g/w (gRPC pass가 지원되야 합니다.) => Server (Nginx -> gRPC stub -> spring)
 - Mobile, PC
   - Client(web)-REST => Proxy Server (Nginx -> [gRPC Gateway](https://github.com/grpc-ecosystem/grpc-gateway)) => Server (Nginx -> gRPC stub -> spring)
 
