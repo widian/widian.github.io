@@ -1,0 +1,48 @@
+---
+layout: post
+title: "루트권한 없이 포트 바인딩하기"
+date: 2018-12-28 12:00:00 +0900
+categories: blog
+comments: true
+---
+
+### NonRootPortBinding
+- httpd, nginx 등의 웹서버 어플리케이션이 1024 미만의 포트바인딩을 루트권한 없이 해주는 일을 말합니다.
+  - 1024미만의 포트는 privileged port여서 root권한 없이는 사용할 수 없도록 제한되어있습니다.
+- https://wiki.apache.org/httpd/NonRootPortBinding 의 글을 번역했습니다.
+
+### 이게 왜 필요한가요?
+- 웹서버 어플리케이션이 su 권한을 얻고 실행되었을 때, 어플리케이션의 보안허점을 통해 su 권한을 탈취할 가능성이 있습니다.
+  - nginx에서는 `user` 설정을 추가할 수 있긴 합니다.
+
+### 어떻게 하나요?
+- 루트 권한을 얻은 상태에서, 다음 쉘 스크립트를 실행합니다.
+```sh
+root@myhost $ setcap cap_net_bind_service=+ep /usr/sbin/httpd
+root@myhost $ setcap cap_net_bind_service=+ep /path/to/web/application/bin
+```
+- 다음 스크립트로 권한이 정상적으로 부여되었는지 확인합니다.
+```sh
+root@myhost $ getcap /usr/sbin/httpd
+/usr/sbin/httpd = cap_net_bind_service+ep
+```
+- 그 다음 유저 로컬 환경에서 웹서버 어플리케이션을 실행해 보는 것으로 정상동작하는지 확인합니다.
+
+### 주의
+- 해당 옵션을 사용하게 되면, su권한이 없는 유저가 su권한이 필요한 포트에 해당 웹어플리케이션으로 웹 서버를 실행할 수 있게 됩니다.
+  - chmod, chown 등으로 웹서버 어플리케이션의 권한을 제한해야 합니다.
+
+### 다른 방법
+- iptables를 이용한 NAT로 유저는 8080포트에 웹서버를 실행하고, linux는 80포트로 온 요청을 8080포트로 변환(translate)해줄 수 있습니다.
+```sh
+root@myhost $ iptables -t nat -A PREROUTING -d <ip> -p tcp --dport 80 -m addrtype --dst-type LOCAL -j DNAT --to-destination <ip>:8080
+root@myhost $ iptables -t nat -A OUTPUT     -d <ip> -p tcp --dport 80 -m addrtype --dst-type LOCAL -j DNAT --to-destination <ip>:8080
+```
+- ip에는 현재 ip를 넣어주시면 됩니다.
+
+### 더 다른 방법.
+- 공유기 등 NAT역할을 하는 라우터에 포트포워딩을 해줍니다.
+  - 위와 같은 방식이지만, 위에서는 서버가 직접 포트포워딩을 하는 것이 다릅니다.
+
+### 추가
+- 이 글은 [velog](https://velog.io/@widian/%EB%A3%A8%ED%8A%B8%EA%B6%8C%ED%95%9C-%EC%97%86%EC%9D%B4-%ED%8F%AC%ED%8A%B8-%EB%B0%94%EC%9D%B8%EB%94%A9%ED%95%98%EA%B8%B0) 에도 포스트했습니다.

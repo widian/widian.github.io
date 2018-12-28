@@ -10,7 +10,7 @@ then
     echo "runserver : run localserver on 4000 port"
 elif [ "$1" == "runserver" ]
 then
-    bundle exec jekyll serve
+    jekyll serve
 else
     echo "Unknown argument"
 fi
