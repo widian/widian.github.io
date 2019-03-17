@@ -1,0 +1,100 @@
+---
+layout: post
+title: "JAVA ArrayList로 합병 정렬(Merge Sort)구현하기"
+date: 2019-03-17 15:41:00 +0900
+categories: Java 
+comments: true
+---
+
+## JAVA로 합병 정렬(Merge Sort)구현하기.
+- 인터넷에 JAVA로 합병 정렬 구현하기를 찾아봐서 꿀빨려고 했는데, 내가 검색해서 나온 결과는 전부 index랑 array를 쓰는 요즘 안 쓸거 같은 자바 코드로 짜여져 있는 코드밖에 없었다.
+- 이직 및 취업준비를 하는데 도움이 되고자 ArrayList로 짠 합병정렬 코드를 velog에 올리겠습니다.
+
+```java
+package com.mycompany.app;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+/**
+ * Merge Sort
+ *
+ */
+public class App 
+{
+    private static List<Integer> targetList = new ArrayList<>(Arrays.asList(100, 40, 60, 75, 77, 34, 51, 24, 24, 37, 88));
+
+    public static void main( String[] args )
+    {
+        App a = new App();
+        List<Integer> result = a.sort(targetList);
+        App.print(result);
+        System.out.println(result.size() == targetList.size());
+    }
+
+    /**
+     * int list를 받아서 한 줄로 프린트 합니다.
+     *
+     * @param result
+     */
+    public static void print(List<Integer> result) {
+        result.stream().forEach(item -> System.out.print(String.format("%d ", item)));
+        System.out.println();
+    }
+
+    /**
+     * merge sort를 시행합니다.
+     *
+     * @param targetList sort할 target 입니다.
+     * @return
+     */
+    public List<Integer> sort(List<Integer> targetList) {
+        // 사이즈가 1보다 크다면
+        if (targetList.size() > 1) {
+            // 왼쪽 오른쪽을 merge 합니다.
+            return merge(
+                // 왼쪽 / 오른쪽으로 배열을 나누고 다시 sort하도록 합니다.
+                sort(targetList.subList(0, targetList.size() / 2)),
+                sort(targetList.subList(targetList.size() / 2, targetList.size()))
+            );
+        } else {
+            // 사이즈가 1 이하라면 재귀가 종료됩니다.
+            return targetList;
+        }
+    }
+
+    /**
+     * 병합합니다.
+     *
+     * @param left 왼쪽 배열
+     * @param right 오른쪽 배열
+     * @return
+     */
+    public List<Integer> merge (List<Integer> left, List<Integer> right) {
+        // 결과가 될 임시 배열입니다.
+        List<Integer> result = new ArrayList<>();
+        int rightIdx = 0;
+
+        // 왼쪽 배열을 순환하면서
+        for (Integer l : left) {
+
+            // right를 끝까지 돌았는지 / right배열의 값이 l보다 작은지 확인하고,
+            while (right.size() > rightIdx && l > right.get(rightIdx)) {
+                // 작은 값을 결과에 넣습니다.
+                result.add(right.get(rightIdx));
+                rightIdx++;
+            }
+            // left가 작다면 left element를 넣습니다.
+            result.add(l);
+        }
+        // 오른쪽 배열의 남은 숫자를 결과에 넣습니다.
+        for (int i = rightIdx; i < right.size(); i ++) {
+            result.add(right.get(i));
+        }
+        return result;
+    }
+}
+```
+
+이 글은 [velog 에도](https://velog.io/@widian/JAVA%EB%A1%9C-%EB%B3%91%ED%95%A9-%EC%A0%95%EB%A0%ACMerge-Sort%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0.-21jtcjkoe2)작성되어있습니다. 
