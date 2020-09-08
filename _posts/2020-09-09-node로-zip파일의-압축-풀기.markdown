@@ -1,0 +1,40 @@
+---
+layout: post
+title: "NodeJS로 zip파일의 압축 풀기"
+date: 2020-09-09 01:49:00 +0900
+categories: Node
+comments: true
+---
+
+## NodeJS로 zip파일의 압축 풀기
+- Node에서 adm-zip을 이용해 Zip 파일의 압축을 푸는 내용에 대해 설명합니다.
+- 보통 웹서버를 만드는 Node로는 zip파일 압축을 풀게 될 일이 거의 없지만, 가끔 간단한 스크립트를 Node로 작성하고 싶을 때 파일스트림을 이용해 zip파일의 압축을 풀어야 하는 순간이 옵니다.
+- [스택오버플로우 답변](https://stackoverflow.com/questions/10308110/simplest-way-to-download-and-unzip-files-in-node-js-cross-platform)에서 `adm-zip`을 추천하기에 해당 라이브러리를 사용해보았습니다.
+
+## adm-zip의 장점
+- adm-zip은 다른 unzip라이브러리와 다르게 다른 의존성을 가져오지 않고 순수 javascript로 제작된 unzip 라이브러리입니다.
+  - 새 오픈소스 라이브러리를 추가할 때 복잡한 라이선스에 대한 고민하지 않고 사용할 수 있습니다. 
+- 압축해제 결과 파일을 memory로 올릴 필요 없이 disk, in-memory 버퍼에서 압축을 풀 수 있습니다.
+- 압축할 파일을 disk에 바로 압축하거나 압축된 버퍼에 바로 압축합니다.
+- 이미 압축된 zip파일에 새 파일을 바로 더하거나 수정/삭제할 수 있습니다.
+- filestream에 대한 이해 없이 바로 사용할 수 있습니다.
+
+## Install
+- `yarn add --dev adm-zip` 으로 추가합니다.
+- `const AdmZip = require('adm-zip')`으로 가져옵니다.
+
+## 사용
+```javascript
+const AdmZip = require('adm-zip');
+
+const fileName = "./file.zip";
+
+const zip = new AdmZip(fileName);	// file위치로 AdmZip 오브젝트를 생성합니다.
+const target = './result/';			// 압축이 해제될 위치를 지정합니다.
+zip.extractAllTo(target, /* 압축결과가 기존 파일을 overwrite 할지 */ true);
+```
+
+- 간단하게 zip파일의 압축 해제를 할 수 있었습니다.
+
+## 기타 정보
+- 자세한 사항은 [adm-zip 공식 깃헙](https://github.com/cthackers/adm-zip)에서 확인할 수 있습니다.
