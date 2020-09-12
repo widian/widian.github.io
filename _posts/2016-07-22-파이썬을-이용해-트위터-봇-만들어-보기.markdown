@@ -3,6 +3,7 @@ layout: post
 title: "Python을 이용해 트위터 봇 만들어 보기 - 1"
 date: 2016-07-22 02:25:00 +0900
 categories: twitter-bot
+tags: [트위터크롤러, 자연어 처리, 파이썬, 트위터 봇, 영어문서]
 comments: true
 ---
 

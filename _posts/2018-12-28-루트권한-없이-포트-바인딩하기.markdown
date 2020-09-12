@@ -2,6 +2,7 @@
 layout: post
 title: "루트권한 없이 포트 바인딩하기"
 date: 2018-12-28 12:00:00 +0900
+tags: [httpd, nginx, getcap, 루트권한 없이, NAT]
 categories: blog
 comments: true
 ---

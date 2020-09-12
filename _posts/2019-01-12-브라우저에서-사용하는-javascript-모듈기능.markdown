@@ -2,6 +2,7 @@
 layout: post
 title: "브라우저에서 사용하는 javascript 모듈 기능"
 date: 2019-01-12 19:56:00 +0900
+tags: [JS 모듈, nomodule, static import, dynamic import, modern javascript, 웹팩, webpack, parcel, 파셀]
 categories: javascript
 comments: true
 ---

@@ -3,6 +3,7 @@ layout: post
 title: "core-js@2에서 core-js@3으로 마이그레이션"
 date: 2019-06-18 20:49:00 +0900
 categories: Javascript
+tags: [core-js, babel, 폴리필, regenerator-runtime, core-js 버전업, core-js3]
 comments: true
 ---
 

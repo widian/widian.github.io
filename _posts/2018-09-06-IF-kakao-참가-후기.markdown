@@ -3,6 +3,7 @@ layout: post
 title: "IF kakao 참가 후기"
 date: 2018-09-06 16:44:00 +0900
 categories: blog
+tags: [IF kakao, 서버사이드 코틀린, 핵심가치, 후기, WebFlux, IF kakao 후기]
 comments: true
 ---
 
